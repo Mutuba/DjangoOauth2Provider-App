@@ -3,25 +3,14 @@ from decimal import Decimal
 from django.contrib.auth import get_user_model
 from django.db import models
 from enumfields import Enum, EnumIntegerField
-# Create your models here.a
 
 
-# class OrderStatusOptions(Enum):
-#     NONE = 0
-#     INITIAL = 1
-#     COMPLETE = 2
-#     CANCELED = 3
-#     PROCESSING = 4
+class UUIDModel(models.Model):
+    pkid = models.BigAutoField(primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
-#     # TODO: Failed state?
-
-#     class Labels:
-#         NONE = _('none')
-#         INITIAL = _('Initial')
-#         COMPLETE = _('Complete')
-#         CANCELED = _('Canceled')
-#         PROCESSING = _('Processing')
-
+    class Meta:
+        abstract = True
 
 class Product(models.Model):
 
